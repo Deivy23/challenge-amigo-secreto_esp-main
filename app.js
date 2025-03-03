@@ -42,11 +42,16 @@ function agregarListado() {
     }
 }
 function cambiarTexto(){
-    var cambio = document.getElementsByClassName('button-draw');
-    if (cambio.innerText == "Sortear amigo") {
+    let boton = document.querySelector('.button-draw');
+    let imagen = document.querySelector('#icono');
+    let cambio = document.querySelector('#textBoton');
+
+    if (cambio.innerText === "Sortear amigo") {
         cambio.innerText = "Reiniciar";
+        imagen.src = "assets/play_circle_outline.png";
     } else {
         cambio.innerText = "Sortear amigo";
+        imagen.src = "assets/play_circle_outline.png";
     }
 
 }
@@ -63,8 +68,10 @@ function sortearAmigo() {
     
          let listadoHTML = document.getElementById('listaAmigos');
          listadoHTML.innerHTML = "";
+
          let listaHTML = document.getElementById('resultado');
          listaHTML.innerHTML = "";
+
          let li = document.createElement('li');
          li.textContent = amigoSorteado;
          listaHTML.appendChild(li);
