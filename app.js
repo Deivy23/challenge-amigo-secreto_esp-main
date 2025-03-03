@@ -1,4 +1,5 @@
 let amigo = [];
+let clicc = 0;
 // let numero = parseFloat(nombreAmigo);
 
 // funcion para agregar los datos al array con una clausula para que no permita otro valor que no sea de tipo string
@@ -58,6 +59,7 @@ function cambiarTexto(){
  
 function sortearAmigo() {
     let amigoSorteado = amigo[Math.floor(Math.random()*amigo.length)];
+    
     console.log(amigoSorteado);
     cambiarTexto();
 
@@ -65,19 +67,28 @@ function sortearAmigo() {
         alert('no se encuentra ningun nombre disponible')
         return;
     } else {
-    
-         let listadoHTML = document.getElementById('listaAmigos');
-         listadoHTML.innerHTML = "";
+     
+        document.getElementById('button-draw').addEventListener('click', function() {
+            clicc++;
+            console.log("Número de clics:", clicc);
+            if (clicc === 1) {
+                document.querySelector('.button-add').setAttribute('disabled', 'true');
+                let listadoHTML = document.getElementById('listaAmigos');
+                listadoHTML.innerHTML = "";
 
-         let listaHTML = document.getElementById('resultado');
-         listaHTML.innerHTML = "";
+                let listaHTML = document.getElementById('resultado');
+                listaHTML.innerHTML = "";
 
-         let li = document.createElement('li');
-         li.textContent = amigoSorteado;
-         listaHTML.appendChild(li);
+                let li = document.createElement('li');
+                li.textContent = amigoSorteado;
+                listaHTML.appendChild(li);
         
+                
+            } else if (clicc === 2) {
+                document.querySelector('.button-add').removeAttribute('disabled')
+            }
+        });
+
     }
    
-
-
 }
